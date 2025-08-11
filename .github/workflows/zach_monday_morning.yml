@@ -1,0 +1,19 @@
+name: My First Workflow      # this is a description of the job to run
+
+on:                          # trigger(s) what makes the workflow run?
+  push:                      # git add / git commit operation / or merge a PR / CHANGES!
+    branches:                # limit actions to ONLY tiggered by this branch
+      - main
+
+jobs:
+  the_build_job:
+    runs-on: ubuntu-latest   # this is the runner to use
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run a simple script
+        run: echo "Hello from GitHub Actions!"
+
+      - name: Do we have python?
+        run: python --version
